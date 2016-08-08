@@ -54,9 +54,6 @@ public class Circle {
                 break;
         }
 
-//        for (int i = 0; i < Pulpit.results.length; i++) {
-//            System.out.println("Results state on " + (i + 1) + ": " + Pulpit.results[i]);
-//        }
     }
 
     boolean checkIfCircleWon() {

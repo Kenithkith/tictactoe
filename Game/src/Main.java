@@ -19,7 +19,6 @@ public class Main {
                 circle1.getNumberFromCircle();
             } while ((!circle1.chosenTile));
 
-            //pulpit.pulpitSummary();
 
             if (circle1.checkIfCircleWon()) {
                 break;
@@ -34,15 +33,11 @@ public class Main {
                 plus1.getNumberFromPlus();
             } while (!plus1.chosenTile);
 
-            //pulpit.pulpitSummary();
 
             if (plus1.checkIfPlusWon()) {
                 break;
             }
         }
-//        for (int i = 0; i < pulpit.results.length; i++) {
-//            System.out.println("results: " + pulpit.results[i]);
-//        }
 
         if (!pulpit.clearPulpit()) {
             pulpit.clearPulpit();

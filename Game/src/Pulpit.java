@@ -36,7 +36,6 @@ public class Pulpit {
     boolean availabilityOfPulpit() {
         for (int i = 0; i < results.length; i++ ) {
             if (results[i] == 0) {
-                //System.out.println("Są pola");
                 return true;
             }
         }
