@@ -8,14 +8,14 @@ import java.util.Scanner;
 public class Circle {
     Scanner scanner = new Scanner(System.in);
     String tile;
-    boolean chosenTile;
+    boolean chosenField;
 
     void getNumberFromCircle() {
         System.out.println("Circle, choose the field...");
 
         tile = scanner.nextLine();
         if (tile.equals("1") || tile.equals("2") || tile.equals("3") || tile.equals("4") || tile.equals("5") || tile.equals("6") || tile.equals("7") || tile.equals("8") || tile.equals("9")) {
-            chosenTile = true;
+            chosenField = true;
         }
         System.out.println("Your choice: " + tile);
 

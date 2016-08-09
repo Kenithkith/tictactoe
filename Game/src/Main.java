@@ -7,40 +7,38 @@ public class Main {
     public static void main(String[] args) {
 
         Pulpit pulpit = new Pulpit();
-        Circle circle1 = new Circle();
-        Plus plus1 = new Plus();
+        Circle playerCircle = new Circle();
+        Plus playerPlus = new Plus();
 
-        while (pulpit.availabilityOfPulpit()) {
+        while (pulpit.checkFreeBoxes()) {
 
             //turn no. 1
-            pulpit.checkAvailableFields();
+            pulpit.showAvailableFields();
 
             do {
-                circle1.getNumberFromCircle();
-            } while ((!circle1.chosenTile));
+                playerCircle.getNumberFromCircle();
+            } while ((!playerCircle.chosenField));
 
 
-            if (circle1.checkIfCircleWon()) {
+            if (playerCircle.checkIfCircleWon()) {
                 break;
             }
 
-            if (!pulpit.availabilityOfPulpit()) break;
+            if (!pulpit.checkFreeBoxes()) break;
 
             //turn no. 2
-            pulpit.checkAvailableFields();
+            pulpit.showAvailableFields();
 
             do {
-                plus1.getNumberFromPlus();
-            } while (!plus1.chosenTile);
+                playerPlus.getNumberFromPlus();
+            } while (!playerPlus.chosenField);
 
 
-            if (plus1.checkIfPlusWon()) {
+            if (playerPlus.checkIfPlusWon()) {
                 break;
             }
         }
 
-        if (!pulpit.clearPulpit()) {
-            pulpit.clearPulpit();
-        }
+        pulpit.clearPulpit();
     }
 }
