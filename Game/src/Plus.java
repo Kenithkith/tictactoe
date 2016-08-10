@@ -7,22 +7,30 @@ public class Plus {
     Scanner scanner = new Scanner(System.in);
     String tile;
     boolean chosenField;
+    int parsedTile;
 
     void getNumberFromPlus() {
         chosenField = false;
 
         round:
         {
+
             System.out.println("Plus, choose the field...");
             tile = scanner.nextLine();
             int parsedTile = Integer.parseInt(tile);
 
             error:
             {
-                if (Pulpit.results[parsedTile - 1] == 200 || Pulpit.results[parsedTile - 1] == 100) {
-                    System.out.println("This tile is already taken.");
-                    break error;
+                try {
+                    if (Pulpit.results[parsedTile - 1] == 200 || Pulpit.results[parsedTile - 1] == 100) {
+                        System.out.println("This tile is already taken.");
+                        break error;
+                    }
                 }
+                catch (ArrayIndexOutOfBoundsException e) {
+                    System.out.println("Incorrect value entered. Try again with values from 1 to 9.");
+                }
+
 
                 if (tile.equals("1") || tile.equals("2") || tile.equals("3") || tile.equals("4") || tile.equals("5") || tile.equals("6") || tile.equals("7") || tile.equals("8") || tile.equals("9")) {
                     chosenField = true;
@@ -73,7 +81,7 @@ public class Plus {
                 (Pulpit.results[0] == 200 && Pulpit.results[4] == 200 && Pulpit.results[8] == 200) ||
                 (Pulpit.results[2] == 200 && Pulpit.results[4] == 200 && Pulpit.results[6] == 200)) {
             System.out.println("PLUS WON!");
-            Pulpit.pulpitSummary();
+            //Pulpit.pulpitSummary();
             return true;
         }
         return false;
