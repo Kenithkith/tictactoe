@@ -13,9 +13,16 @@ public class Circle {
 
         round:
         {
-            System.out.println("Circle, choose the field...");
-            tile = scanner.nextLine();
-            int parsedTile = Integer.parseInt(tile);
+            int parsedTile;
+
+            try {
+                System.out.println("Circle, choose the field...");
+                tile = scanner.nextLine();
+                parsedTile = Integer.parseInt(tile);
+            } catch (NumberFormatException e) {
+                System.out.println("An error occured: " + e.getMessage());
+                return;
+            }
 
             error:
             {
@@ -78,7 +85,7 @@ public class Circle {
                 (Pulpit.results[0] == 100 && Pulpit.results[4] == 100 && Pulpit.results[8] == 100) ||
                 (Pulpit.results[2] == 100 && Pulpit.results[4] == 100 && Pulpit.results[6] == 100)) {
             System.out.println("CIRCLE WON!");
-            //Pulpit.pulpitSummary();
+            Pulpit.pulpitSummary();
             return true;
         }
         return false;
