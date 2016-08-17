@@ -73,7 +73,6 @@ public class Circle {
                 }
             }
         }
-        //Pulpit.pulpitSummary();
     }
 
     boolean checkIfCircleWon() {

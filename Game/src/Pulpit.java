@@ -23,16 +23,6 @@ public class Pulpit {
         return true;
     }
 
-    void showAvailableFields() {
-        System.out.println("Available boxes: ");
-        for (int i = 0; i < Pulpit.results.length; i++) {
-            if(results[i] == 0) {
-                System.out.print((i + 1) + ", ");
-            }
-        }
-        System.out.println();
-    }
-
     boolean checkFreeBoxes() {
         for (int i = 0; i < results.length; i++ ) {
             if (results[i] == 0) {

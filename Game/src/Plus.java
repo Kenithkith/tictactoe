@@ -73,7 +73,6 @@ public class Plus {
                 }
             }
         }
-        //Pulpit.pulpitSummary();
     }
 
     boolean checkIfPlusWon() {
