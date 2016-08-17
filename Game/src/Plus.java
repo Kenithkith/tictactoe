@@ -7,17 +7,22 @@ public class Plus {
     Scanner scanner = new Scanner(System.in);
     String tile;
     boolean chosenField;
-    int parsedTile;
 
     void getNumberFromPlus() {
         chosenField = false;
 
         round:
         {
+            int parsedTile;
 
+            try{
             System.out.println("Plus, choose the field...");
             tile = scanner.nextLine();
-            int parsedTile = Integer.parseInt(tile);
+            parsedTile = Integer.parseInt(tile);
+            } catch (NumberFormatException e) {
+            System.out.println("An error occured: " + e.getMessage());
+            return;
+            }
 
             error:
             {
