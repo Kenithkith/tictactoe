@@ -42,10 +42,28 @@ public class Pulpit {
         return false;
     }
 
+    public static String[] shapesAssignments = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
+
     public static void pulpitSummary() {
         for (int i = 0; i < results.length; i++) {
-            System.out.println("Current state on : " + (i + 1) + "=" + results[i]);
+            if (results[i] == 100) {
+                shapesAssignments[i] = "O";
+            } else if (results[i] == 200) {
+                shapesAssignments[i] = "X";
+            }
         }
+
+        System.out.print(shapesAssignments[0] + "|" + shapesAssignments[1] + "|" + shapesAssignments[2]);
+        System.out.println("          1 | 2 | 3");
+        System.out.print("-----");
+        System.out.println("         -----------");
+        System.out.print(shapesAssignments[3] + "|" + shapesAssignments[4] + "|" + shapesAssignments[5]);
+        System.out.println("   -->    4 | 5 | 6");
+        System.out.print("-----");
+        System.out.println("         -----------");
+        System.out.print(shapesAssignments[6] + "|" + shapesAssignments[7] + "|" + shapesAssignments[8]);
+        System.out.println("          7 | 8 | 9");
+        System.out.println();
     }
 
 }

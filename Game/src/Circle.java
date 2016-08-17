@@ -24,7 +24,6 @@ public class Circle {
                 return;
             }
 
-
             error:
             {
                 try {
@@ -74,6 +73,7 @@ public class Circle {
                 }
             }
         }
+        //Pulpit.pulpitSummary();
     }
 
     boolean checkIfCircleWon() {
@@ -86,7 +86,7 @@ public class Circle {
                 (Pulpit.results[0] == 100 && Pulpit.results[4] == 100 && Pulpit.results[8] == 100) ||
                 (Pulpit.results[2] == 100 && Pulpit.results[4] == 100 && Pulpit.results[6] == 100)) {
             System.out.println("CIRCLE WON!");
-            //Pulpit.pulpitSummary();
+            Pulpit.pulpitSummary();
             return true;
         }
         return false;

@@ -13,7 +13,7 @@ public class Main {
         while (pulpit.checkFreeBoxes()) {
 
             //turn no. 1
-            pulpit.showAvailableFields();
+            pulpit.pulpitSummary();
 
             do {
                 playerCircle.getNumberFromCircle();
@@ -27,7 +27,7 @@ public class Main {
             if (!pulpit.checkFreeBoxes()) break;
 
             //turn no. 2
-            pulpit.showAvailableFields();
+            pulpit.pulpitSummary();
 
             do {
                 playerPlus.getNumberFromPlus();
