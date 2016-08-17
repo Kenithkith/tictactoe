@@ -13,9 +13,17 @@ public class Circle {
 
         round:
         {
-            System.out.println("Circle, choose the field...");
-            tile = scanner.nextLine();
-            int parsedTile = Integer.parseInt(tile);
+            int parsedTile;
+
+            try {
+                System.out.println("Circle, choose the field...");
+                tile = scanner.nextLine();
+                parsedTile = Integer.parseInt(tile);
+            } catch (NumberFormatException e) {
+                System.out.println("An error occured: " + e.getMessage());
+                return;
+            }
+
 
             error:
             {
