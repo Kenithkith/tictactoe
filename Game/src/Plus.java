@@ -4,7 +4,17 @@ import java.util.Scanner;
  * Created by Patryk on 27.07.2016.
  */
 public class Plus {
+
     Scanner scanner = new Scanner(System.in);
+    String secondPlayerName;
+
+    Plus() {
+        do {
+            System.out.println("Enter name of second player:");
+            secondPlayerName = scanner.nextLine().toUpperCase();
+        } while (secondPlayerName.isEmpty());
+    }
+
     String tile;
     boolean chosenField;
 
@@ -16,7 +26,7 @@ public class Plus {
             int parsedTile;
 
             try {
-                System.out.println("Plus, choose the field...");
+                System.out.println(secondPlayerName + " (X), choose the field...");
                 tile = scanner.nextLine();
                 parsedTile = Integer.parseInt(tile);
             } catch (NumberFormatException e) {
@@ -36,7 +46,7 @@ public class Plus {
                     System.out.println("Incorrect value entered. Try again with values from 1 to 9.");
                 }
 
-                if (tile.equals("1") || tile.equals("2") || tile.equals("3") || tile.equals("4") || tile.equals("5") || tile.equals("6") || tile.equals("7") || tile.equals("8") || tile.equals("9")) {
+                if (parsedTile >= 1 && parsedTile <= 9) {
                     chosenField = true;
                 }
 
@@ -84,7 +94,7 @@ public class Plus {
                 (Pulpit.results[2] == 200 && Pulpit.results[5] == 200 && Pulpit.results[8] == 200) ||
                 (Pulpit.results[0] == 200 && Pulpit.results[4] == 200 && Pulpit.results[8] == 200) ||
                 (Pulpit.results[2] == 200 && Pulpit.results[4] == 200 && Pulpit.results[6] == 200)) {
-            System.out.println("PLUS WON!");
+            System.out.println(secondPlayerName + " (X) HAS WON!");
             Pulpit.pulpitSummary();
             return true;
         }
