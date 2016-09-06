@@ -11,7 +11,10 @@ public class Circle {
     Circle() {
         do {
             System.out.println("Enter name of first player:");
-            firstPlayerName = scanner.nextLine().toUpperCase();
+            firstPlayerName = scanner.nextLine();
+            if (firstPlayerName.isEmpty()) {
+                System.out.println("You haven't entered your name...");
+            }
         } while (firstPlayerName.isEmpty());
     }
 
