@@ -6,7 +6,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+
         Pulpit pulpit = new Pulpit();
+        do {
+
         Circle playerCircle = new Circle();
         Plus playerPlus = new Plus();
 
@@ -40,5 +43,8 @@ public class Main {
         }
 
         pulpit.clearPulpit();
+
+   } while (pulpit.askForNextGame());
+
     }
 }

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by Patryk on 27.07.2016.
@@ -54,6 +55,16 @@ public class Pulpit {
         System.out.print(shapesAssignments[6] + "|" + shapesAssignments[7] + "|" + shapesAssignments[8]);
         System.out.println("          7 | 8 | 9");
         System.out.println();
+    }
+
+    public boolean askForNextGame() {
+        Scanner decision = new Scanner(System.in);
+        System.out.println("Do you want to play again? Y/N");
+        String choice = decision.nextLine();
+        if (choice.equals("y") || choice.equals("Y")) {
+            return true;
+        }
+        return false;
     }
 
 }
