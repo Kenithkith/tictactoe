@@ -11,7 +11,10 @@ public class Plus {
     Plus() {
         do {
             System.out.println("Enter name of second player:");
-            secondPlayerName = scanner.nextLine().toUpperCase();
+            secondPlayerName = scanner.nextLine();
+            if (secondPlayerName.isEmpty()) {
+                System.out.println("You haven't entered your name...");
+            }
         } while (secondPlayerName.isEmpty());
     }
 
