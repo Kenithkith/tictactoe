@@ -24,27 +24,25 @@ public class Circle {
     void getNumberFromCircle() {
         chosenField = false;
 
-        int parsedTile;
+        int parsedTile = 0;
 
         do {
             try {
                 System.out.println(firstPlayerName + " (O), choose the field...");
                 tile = scanner.nextLine();
                 parsedTile = Integer.parseInt(tile);
-            } catch (NumberFormatException e) {
-                System.out.println("An error occured: " + e.getMessage());
-                return;
-            }
 
-            try {
                 if (Pulpit.results[parsedTile - 1] == 200 || Pulpit.results[parsedTile - 1] == 100) {
                     System.out.println("This tile is already taken.");
+                    return;
                 }
+            } catch (NumberFormatException nfe) {
+                System.out.println("You've given an empty value: ");
+                return;
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Incorrect value entered. Try again with values from 1 to 9.");
             }
         } while (parsedTile == 0);
-
 
         if (parsedTile >= 1 && parsedTile <= 9) {
             chosenField = true;
