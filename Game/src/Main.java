@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
 
         Pulpit pulpit = new Pulpit();
+
         do {
 
         Circle playerCircle = new Circle();
