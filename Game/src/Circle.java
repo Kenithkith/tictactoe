@@ -1,38 +1,28 @@
-import java.util.Scanner;
-
 /**
  * Created by Patryk on 27.07.2016.
  */
-public class Circle {
-
-    Scanner scanner = new Scanner(System.in);
-    String firstPlayerName;
+public class Circle extends Player {
 
     Circle() {
         do {
             System.out.println("Enter name of first player:");
-            firstPlayerName = scanner.nextLine();
-            if (firstPlayerName.isEmpty()) {
+            playerName = scanner.nextLine();
+            if (playerName.isEmpty()) {
                 System.out.println("You haven't entered your name...");
             }
-        } while (firstPlayerName.isEmpty());
+        } while (playerName.isEmpty());
     }
 
-    String tile;
-    boolean chosenField;
-
     void getNumberFromCircle() {
-        chosenField = false;
-
-        int parsedTile = 0;
 
         do {
             try {
-                System.out.println(firstPlayerName + " (O), choose the field...");
+                System.out.println(playerName + " (O), choose the field...");
                 tile = scanner.nextLine();
                 parsedTile = Integer.parseInt(tile);
 
                 if (parsedTile < 1 || parsedTile > 9) {
+                    System.out.println("Enter a value from range 1 - 9");
                     return;
                 }
 
@@ -46,12 +36,10 @@ public class Circle {
             }
         } while (parsedTile == 0);
 
-        if (parsedTile >= 1 && parsedTile <= 9) {
-            chosenField = true;
-        }
+        super.checkIfChosenFieldIsFromRange();
+    }
 
-        System.out.println("Your choice: " + tile);
-
+    void assignChosenFieldToPlayer() {
         switch (tile) {
             case "1":
                 Pulpit.results[0] = 100;
@@ -92,7 +80,7 @@ public class Circle {
                 (Pulpit.results[2] == 100 && Pulpit.results[5] == 100 && Pulpit.results[8] == 100) ||
                 (Pulpit.results[0] == 100 && Pulpit.results[4] == 100 && Pulpit.results[8] == 100) ||
                 (Pulpit.results[2] == 100 && Pulpit.results[4] == 100 && Pulpit.results[6] == 100)) {
-            System.out.println(firstPlayerName + " (O) HAS WON!");
+            System.out.println(playerName + " (O) HAS WON!");
             Pulpit.pulpitSummary();
             return true;
         }

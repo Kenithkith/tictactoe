@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
 
         Pulpit pulpit = new Pulpit();
+        Player player = new Player();
 
         do {
 
@@ -20,6 +21,7 @@ public class Main {
                 playerCircle.getNumberFromCircle();
             } while ((!playerCircle.chosenField));
 
+            playerCircle.assignChosenFieldToPlayer();
 
             if (playerCircle.checkIfCircleWon()) {
                 break;
@@ -34,6 +36,7 @@ public class Main {
                 playerPlus.getNumberFromPlus();
             } while (!playerPlus.chosenField);
 
+            playerPlus.assignChosenFieldToPlayer();
 
             if (playerPlus.checkIfPlusWon()) {
                 break;

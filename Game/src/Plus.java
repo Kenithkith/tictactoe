@@ -1,38 +1,28 @@
-import java.util.Scanner;
-
 /**
  * Created by Patryk on 27.07.2016.
  */
-public class Plus {
-
-    Scanner scanner = new Scanner(System.in);
-    String secondPlayerName;
+public class Plus extends Player {
 
     Plus() {
         do {
             System.out.println("Enter name of second player:");
-            secondPlayerName = scanner.nextLine();
-            if (secondPlayerName.isEmpty()) {
+            playerName = scanner.nextLine();
+            if (playerName.isEmpty()) {
                 System.out.println("You haven't entered your name...");
             }
-        } while (secondPlayerName.isEmpty());
+        } while (playerName.isEmpty());
     }
 
-    String tile;
-    boolean chosenField;
-
     void getNumberFromPlus() {
-        chosenField = false;
-
-        int parsedTile = 0;
 
         do {
             try {
-                System.out.println(secondPlayerName + " (X), choose the field...");
+                System.out.println(playerName + " (X), choose the field...");
                 tile = scanner.nextLine();
                 parsedTile = Integer.parseInt(tile);
 
                 if (parsedTile < 1 || parsedTile > 9) {
+                    System.out.println("Enter a value from range 1 - 9");
                     return;
                 }
 
@@ -40,19 +30,16 @@ public class Plus {
                     System.out.println("This tile is already taken.");
                     return;
                 }
-
             } catch (NumberFormatException nfe) {
                 System.out.println("You've given an empty value: ");
                 return;
             }
         } while (parsedTile == 0);
 
-        if (parsedTile >= 1 && parsedTile <= 9) {
-            chosenField = true;
-        }
+        super.checkIfChosenFieldIsFromRange();
+    }
 
-        System.out.println("Your choice: " + tile);
-
+    void assignChosenFieldToPlayer() {
         switch (tile) {
             case "1":
                 Pulpit.results[0] = 200;
@@ -93,7 +80,7 @@ public class Plus {
                 (Pulpit.results[2] == 200 && Pulpit.results[5] == 200 && Pulpit.results[8] == 200) ||
                 (Pulpit.results[0] == 200 && Pulpit.results[4] == 200 && Pulpit.results[8] == 200) ||
                 (Pulpit.results[2] == 200 && Pulpit.results[4] == 200 && Pulpit.results[6] == 200)) {
-            System.out.println(secondPlayerName + " (X) HAS WON!");
+            System.out.println(playerName + " (X) HAS WON!");
             Pulpit.pulpitSummary();
             return true;
         }
