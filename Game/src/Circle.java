@@ -32,6 +32,10 @@ public class Circle {
                 tile = scanner.nextLine();
                 parsedTile = Integer.parseInt(tile);
 
+                if (parsedTile < 1 || parsedTile > 9) {
+                    return;
+                }
+
                 if (Pulpit.results[parsedTile - 1] == 200 || Pulpit.results[parsedTile - 1] == 100) {
                     System.out.println("This tile is already taken.");
                     return;
@@ -39,8 +43,6 @@ public class Circle {
             } catch (NumberFormatException nfe) {
                 System.out.println("You've given an empty value: ");
                 return;
-            } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Incorrect value entered. Try again with values from 1 to 9.");
             }
         } while (parsedTile == 0);
 
