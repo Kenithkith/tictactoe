@@ -12,7 +12,7 @@ public class Main {
         Circle playerCircle = new Circle();
         Plus playerPlus = new Plus();
 
-        while (pulpit.checkFreeBoxes()) {
+        while (pulpit.isAnyBoxFree()) {
 
             //turn no. 1
             pulpit.pulpitSummary();
@@ -23,11 +23,14 @@ public class Main {
 
             playerCircle.assignChosenFieldToPlayer();
 
-            if (playerCircle.checkIfCircleWon()) {
+
+            if (player.checkTheWinner()) {
                 break;
             }
 
-            if (!pulpit.checkFreeBoxes()) break;
+            pulpit.checkIfPulpitNotBlocked();
+
+            if (!pulpit.isAnyBoxFree()) break;
 
             //turn no. 2
             pulpit.pulpitSummary();
@@ -38,14 +41,17 @@ public class Main {
 
             playerPlus.assignChosenFieldToPlayer();
 
-            if (playerPlus.checkIfPlusWon()) {
+
+            if (player.checkTheWinner()) {
                 break;
             }
+
+            pulpit.checkIfPulpitNotBlocked();
         }
 
         pulpit.clearPulpit();
 
-   } while (pulpit.askForNextGame());
+   } while (pulpit.isNextGameChosen());
 
     }
 }
