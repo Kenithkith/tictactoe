@@ -17,12 +17,14 @@ public class Pulpit {
     boolean clearPulpit() {
         for (int i = 0; i < pulpitBoxes.length; i++) {
             pulpitBoxes[i] = 0;
+            results[i] = 0;
+            shapesAssignments[i] = " ";
         }
         System.out.println("The pulpit is empty.");
         return true;
     }
 
-    boolean checkFreeBoxes() {
+    boolean isAnyBoxFree() {
         for (int i = 0; i < results.length; i++ ) {
             if (results[i] == 0) {
                 return true;
@@ -55,14 +57,20 @@ public class Pulpit {
         System.out.println();
     }
 
-    public boolean askForNextGame() {
+    void checkIfPulpitNotBlocked() {
+        if (!isAnyBoxFree() && !Player.checkTheWinner()) {
+            System.out.println("Nobody won :-(");
+        }
+    }
+
+    public boolean isNextGameChosen() {
         Scanner decision = new Scanner(System.in);
         System.out.println("Do you want to play again? Y/N");
         String choice = decision.nextLine();
         if (choice.equals("y") || choice.equals("Y")) {
+            clearPulpit();
             return true;
         }
         return false;
     }
-
 }
