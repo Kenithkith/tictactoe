@@ -13,11 +13,19 @@ public class Player {
     int parsedTile;
 
     boolean checkIfChosenFieldIsFromRange() {
-        if (parsedTile >= 1 && parsedTile <= 9) {
-            System.out.println("Your choice: " + tile);
-            chosenField = true;
+        try {
+            if (parsedTile < 1 || parsedTile > 9) {
+                System.out.println("Enter a value from range 1 - 9");
+                return false;
+            } else if (parsedTile >= 1 && parsedTile <= 9) {
+                System.out.println("Your choice: " + tile);
+                chosenField = true;
+            }
+            return false;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("exception");
+            return false;
         }
-        return false;
     }
 
     void getNumberFromPlayer() {
@@ -27,10 +35,11 @@ public class Player {
                 tile = scanner.nextLine();
                 parsedTile = Integer.parseInt(tile);
 
-                if (parsedTile < 1 || parsedTile > 9) {
-                    System.out.println("Enter a value from range 1 - 9");
-                    return;
-                }
+//                if (parsedTile < 1 || parsedTile > 9) {
+//                    System.out.println("Enter a value from range 1 - 9");
+//                    return;
+//                }
+                checkIfChosenFieldIsFromRange();
 
                 if (GameBoard.results[parsedTile - 1] == 200 || GameBoard.results[parsedTile - 1] == 100) {
                     System.out.println("This tile is already taken.");
@@ -41,7 +50,7 @@ public class Player {
                 return;
             }
         } while (parsedTile == 0);
-        checkIfChosenFieldIsFromRange();
+        //checkIfChosenFieldIsFromRange();
     }
 
 }
