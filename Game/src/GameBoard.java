@@ -3,18 +3,18 @@ import java.util.Scanner;
 /**
  * Created by Patryk on 27.07.2016.
  */
-public class Pulpit {
+public class GameBoard {
     int[] pulpitBoxes = new int[9];
     public static int[] results = new int[9];
 
-    Pulpit() {
+    GameBoard() {
         for (int i = 0; i < pulpitBoxes.length; i++) {
             pulpitBoxes[i] = i + 1;
         }
         System.out.println("Welcome to the game.");
     }
 
-    boolean clearPulpit() {
+    boolean clear() {
         for (int i = 0; i < pulpitBoxes.length; i++) {
             pulpitBoxes[i] = 0;
             results[i] = 0;
@@ -35,7 +35,7 @@ public class Pulpit {
 
     public static String[] shapesAssignments = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
 
-    public static void pulpitSummary() {
+    public static void drawBoard() {
         for (int i = 0; i < results.length; i++) {
             if (results[i] == 100) {
                 shapesAssignments[i] = "O";
@@ -68,7 +68,7 @@ public class Pulpit {
         System.out.println("Do you want to play again? Y/N");
         String choice = decision.nextLine();
         if (choice.equals("y") || choice.equals("Y")) {
-            clearPulpit();
+            clear();
             return true;
         }
         return false;

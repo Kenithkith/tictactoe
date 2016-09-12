@@ -29,7 +29,7 @@ public class Plus extends Player {
                     return;
                 }
 
-                if (Pulpit.results[parsedTile - 1] == 200 || Pulpit.results[parsedTile - 1] == 100) {
+                if (GameBoard.results[parsedTile - 1] == 200 || GameBoard.results[parsedTile - 1] == 100) {
                     System.out.println("This tile is already taken.");
                     return;
                 }
@@ -43,7 +43,7 @@ public class Plus extends Player {
     }
 
     void assignChosenFieldToPlayer() {
-        if ((Pulpit.results[parsedTile - 1] != 100) && (Pulpit.results[parsedTile - 1] != 200))
-            Pulpit.results[parsedTile - 1] = 200;
+        if ((GameBoard.results[parsedTile - 1] != 100) && (GameBoard.results[parsedTile - 1] != 200))
+            GameBoard.results[parsedTile - 1] = 200;
     }
 }

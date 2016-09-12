@@ -20,27 +20,27 @@ public class Player {
     }
 
     static boolean checkTheWinner() {
-        if ((Pulpit.results[0] == 100 && Pulpit.results[1] == 100 && Pulpit.results[2] == 100) ||
-                (Pulpit.results[3] == 100 && Pulpit.results[4] == 100 && Pulpit.results[5] == 100) ||
-                (Pulpit.results[6] == 100 && Pulpit.results[7] == 100 && Pulpit.results[8] == 100) ||
-                (Pulpit.results[0] == 100 && Pulpit.results[3] == 100 && Pulpit.results[6] == 100) ||
-                (Pulpit.results[1] == 100 && Pulpit.results[4] == 100 && Pulpit.results[7] == 100) ||
-                (Pulpit.results[2] == 100 && Pulpit.results[5] == 100 && Pulpit.results[8] == 100) ||
-                (Pulpit.results[0] == 100 && Pulpit.results[4] == 100 && Pulpit.results[8] == 100) ||
-                (Pulpit.results[2] == 100 && Pulpit.results[4] == 100 && Pulpit.results[6] == 100)) {
+        if ((GameBoard.results[0] == 100 && GameBoard.results[1] == 100 && GameBoard.results[2] == 100) ||
+                (GameBoard.results[3] == 100 && GameBoard.results[4] == 100 && GameBoard.results[5] == 100) ||
+                (GameBoard.results[6] == 100 && GameBoard.results[7] == 100 && GameBoard.results[8] == 100) ||
+                (GameBoard.results[0] == 100 && GameBoard.results[3] == 100 && GameBoard.results[6] == 100) ||
+                (GameBoard.results[1] == 100 && GameBoard.results[4] == 100 && GameBoard.results[7] == 100) ||
+                (GameBoard.results[2] == 100 && GameBoard.results[5] == 100 && GameBoard.results[8] == 100) ||
+                (GameBoard.results[0] == 100 && GameBoard.results[4] == 100 && GameBoard.results[8] == 100) ||
+                (GameBoard.results[2] == 100 && GameBoard.results[4] == 100 && GameBoard.results[6] == 100)) {
             System.out.println(Circle.circleName + " (O) HAS WON!");
-            Pulpit.pulpitSummary();
+            GameBoard.drawBoard();
             return true;
-        } else if ((Pulpit.results[0] == 200 && Pulpit.results[1] == 200 && Pulpit.results[2] == 200) ||
-                (Pulpit.results[3] == 200 && Pulpit.results[4] == 200 && Pulpit.results[5] == 200) ||
-                (Pulpit.results[6] == 200 && Pulpit.results[7] == 200 && Pulpit.results[8] == 200) ||
-                (Pulpit.results[0] == 200 && Pulpit.results[3] == 200 && Pulpit.results[6] == 200) ||
-                (Pulpit.results[1] == 200 && Pulpit.results[4] == 200 && Pulpit.results[7] == 200) ||
-                (Pulpit.results[2] == 200 && Pulpit.results[5] == 200 && Pulpit.results[8] == 200) ||
-                (Pulpit.results[0] == 200 && Pulpit.results[4] == 200 && Pulpit.results[8] == 200) ||
-                (Pulpit.results[2] == 200 && Pulpit.results[4] == 200 && Pulpit.results[6] == 200)) {
+        } else if ((GameBoard.results[0] == 200 && GameBoard.results[1] == 200 && GameBoard.results[2] == 200) ||
+                (GameBoard.results[3] == 200 && GameBoard.results[4] == 200 && GameBoard.results[5] == 200) ||
+                (GameBoard.results[6] == 200 && GameBoard.results[7] == 200 && GameBoard.results[8] == 200) ||
+                (GameBoard.results[0] == 200 && GameBoard.results[3] == 200 && GameBoard.results[6] == 200) ||
+                (GameBoard.results[1] == 200 && GameBoard.results[4] == 200 && GameBoard.results[7] == 200) ||
+                (GameBoard.results[2] == 200 && GameBoard.results[5] == 200 && GameBoard.results[8] == 200) ||
+                (GameBoard.results[0] == 200 && GameBoard.results[4] == 200 && GameBoard.results[8] == 200) ||
+                (GameBoard.results[2] == 200 && GameBoard.results[4] == 200 && GameBoard.results[6] == 200)) {
             System.out.println(Plus.plusName + " (X) HAS WON!");
-            Pulpit.pulpitSummary();
+            GameBoard.drawBoard();
             return true;
         }
         return false;

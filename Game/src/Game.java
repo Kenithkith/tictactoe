@@ -1,10 +1,10 @@
 /**
  * Created by Patryk on 27.07.2016.
  */
-public class Main {
+public class Game {
     public static void main(String[] args) {
 
-        Pulpit pulpit = new Pulpit();
+        GameBoard gameBoard = new GameBoard();
         Player player = new Player();
 
         do {
@@ -12,10 +12,10 @@ public class Main {
         Circle playerCircle = new Circle();
         Plus playerPlus = new Plus();
 
-        while (pulpit.isAnyBoxFree()) {
+        while (gameBoard.isAnyBoxFree()) {
 
             //turn no. 1
-            pulpit.pulpitSummary();
+            gameBoard.drawBoard();
 
             do {
                 playerCircle.getNumberFromCircle();
@@ -28,12 +28,12 @@ public class Main {
                 break;
             }
 
-            pulpit.checkIfPulpitNotBlocked();
+            gameBoard.checkIfPulpitNotBlocked();
 
-            if (!pulpit.isAnyBoxFree()) break;
+            if (!gameBoard.isAnyBoxFree()) break;
 
             //turn no. 2
-            pulpit.pulpitSummary();
+            gameBoard.drawBoard();
 
             do {
                 playerPlus.getNumberFromPlus();
@@ -46,12 +46,12 @@ public class Main {
                 break;
             }
 
-            pulpit.checkIfPulpitNotBlocked();
+            gameBoard.checkIfPulpitNotBlocked();
         }
 
-        pulpit.clearPulpit();
+        gameBoard.clear();
 
-   } while (pulpit.isNextGameChosen());
+   } while (gameBoard.isNextGameChosen());
 
     }
 }
