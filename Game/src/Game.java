@@ -5,7 +5,6 @@ public class Game {
     public static void main(String[] args) {
 
         GameBoard gameBoard = new GameBoard();
-        Player player = new Player();
 
         do {
 
@@ -18,17 +17,17 @@ public class Game {
             gameBoard.drawBoard();
 
             do {
-                playerCircle.getNumberFromCircle();
+                playerCircle.getNumberFromPlayer();
             } while ((!playerCircle.chosenField));
 
             playerCircle.assignChosenFieldToPlayer();
 
 
-            if (player.checkTheWinner()) {
+            if (checkTheWinner(playerCircle, playerPlus)) {
                 break;
             }
 
-            gameBoard.checkIfPulpitNotBlocked();
+            gameBoard.checkIfPulpitNotBlocked(playerCircle, playerPlus);
 
             if (!gameBoard.isAnyBoxFree()) break;
 
@@ -36,22 +35,48 @@ public class Game {
             gameBoard.drawBoard();
 
             do {
-                playerPlus.getNumberFromPlus();
+                playerPlus.getNumberFromPlayer();
             } while (!playerPlus.chosenField);
 
             playerPlus.assignChosenFieldToPlayer();
 
 
-            if (player.checkTheWinner()) {
+            if (checkTheWinner(playerCircle, playerPlus)) {
                 break;
             }
 
-            gameBoard.checkIfPulpitNotBlocked();
+            gameBoard.checkIfPulpitNotBlocked(playerCircle, playerPlus);
         }
 
         gameBoard.clear();
 
-   } while (gameBoard.isNextGameChosen());
-
+        } while (gameBoard.isNextGameChosen());
     }
+
+    static boolean isPlayerWin(int playerId)
+     {
+         return (GameBoard.results[0] == playerId && GameBoard.results[1] == playerId && GameBoard.results[2] == playerId) ||
+               (GameBoard.results[3] == playerId && GameBoard.results[4] == playerId && GameBoard.results[5] == playerId) ||
+                (GameBoard.results[6] == playerId && GameBoard.results[7] == playerId && GameBoard.results[8] == playerId) ||
+                (GameBoard.results[0] == playerId && GameBoard.results[3] == playerId && GameBoard.results[6] == playerId) ||
+                (GameBoard.results[1] == playerId && GameBoard.results[4] == playerId && GameBoard.results[7] == playerId) ||
+                (GameBoard.results[2] == playerId && GameBoard.results[5] == playerId && GameBoard.results[8] == playerId) ||
+                (GameBoard.results[0] == playerId && GameBoard.results[4] == playerId && GameBoard.results[8] == playerId) ||
+                (GameBoard.results[2] == playerId && GameBoard.results[4] == playerId && GameBoard.results[6] == playerId);
+    }
+
+    static boolean checkTheWinner(Player circle, Player plus) {
+        if (isPlayerWin(100)) {
+            System.out.println(circle.playerName + " (O) HAS WON!");
+            GameBoard.drawBoard();
+            return true;
+        }
+        if (isPlayerWin(200)) {
+            System.out.println(plus.playerName + " (X) HAS WON!");
+            GameBoard.drawBoard();
+            return true;
+        }
+        return false;
+    }
+
 }

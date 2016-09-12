@@ -57,8 +57,8 @@ public class GameBoard {
         System.out.println();
     }
 
-    void checkIfPulpitNotBlocked() {
-        if (!isAnyBoxFree() && !Player.checkTheWinner()) {
+    void checkIfPulpitNotBlocked(Player circle, Player plus) {
+        if (!isAnyBoxFree() && !Game.checkTheWinner(circle, plus)) {
             System.out.println("Nobody won :-(");
         }
     }
