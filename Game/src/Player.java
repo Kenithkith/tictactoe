@@ -8,6 +8,7 @@ public class Player {
     Scanner scanner = new Scanner(System.in);
     String playerName;
     String tile;
+    String symbol;
     boolean chosenField;
     int parsedTile;
 
@@ -19,31 +20,28 @@ public class Player {
         return false;
     }
 
-    static boolean checkTheWinner() {
-        if ((GameBoard.results[0] == 100 && GameBoard.results[1] == 100 && GameBoard.results[2] == 100) ||
-                (GameBoard.results[3] == 100 && GameBoard.results[4] == 100 && GameBoard.results[5] == 100) ||
-                (GameBoard.results[6] == 100 && GameBoard.results[7] == 100 && GameBoard.results[8] == 100) ||
-                (GameBoard.results[0] == 100 && GameBoard.results[3] == 100 && GameBoard.results[6] == 100) ||
-                (GameBoard.results[1] == 100 && GameBoard.results[4] == 100 && GameBoard.results[7] == 100) ||
-                (GameBoard.results[2] == 100 && GameBoard.results[5] == 100 && GameBoard.results[8] == 100) ||
-                (GameBoard.results[0] == 100 && GameBoard.results[4] == 100 && GameBoard.results[8] == 100) ||
-                (GameBoard.results[2] == 100 && GameBoard.results[4] == 100 && GameBoard.results[6] == 100)) {
-            System.out.println(Circle.circleName + " (O) HAS WON!");
-            GameBoard.drawBoard();
-            return true;
-        } else if ((GameBoard.results[0] == 200 && GameBoard.results[1] == 200 && GameBoard.results[2] == 200) ||
-                (GameBoard.results[3] == 200 && GameBoard.results[4] == 200 && GameBoard.results[5] == 200) ||
-                (GameBoard.results[6] == 200 && GameBoard.results[7] == 200 && GameBoard.results[8] == 200) ||
-                (GameBoard.results[0] == 200 && GameBoard.results[3] == 200 && GameBoard.results[6] == 200) ||
-                (GameBoard.results[1] == 200 && GameBoard.results[4] == 200 && GameBoard.results[7] == 200) ||
-                (GameBoard.results[2] == 200 && GameBoard.results[5] == 200 && GameBoard.results[8] == 200) ||
-                (GameBoard.results[0] == 200 && GameBoard.results[4] == 200 && GameBoard.results[8] == 200) ||
-                (GameBoard.results[2] == 200 && GameBoard.results[4] == 200 && GameBoard.results[6] == 200)) {
-            System.out.println(Plus.plusName + " (X) HAS WON!");
-            GameBoard.drawBoard();
-            return true;
-        }
-        return false;
+    void getNumberFromPlayer() {
+        do {
+            try {
+                System.out.println(playerName + " (" + symbol + "), choose the field...");
+                tile = scanner.nextLine();
+                parsedTile = Integer.parseInt(tile);
+
+                if (parsedTile < 1 || parsedTile > 9) {
+                    System.out.println("Enter a value from range 1 - 9");
+                    return;
+                }
+
+                if (GameBoard.results[parsedTile - 1] == 200 || GameBoard.results[parsedTile - 1] == 100) {
+                    System.out.println("This tile is already taken.");
+                    return;
+                }
+            } catch (NumberFormatException nfe) {
+                System.out.println("You've given an empty value: ");
+                return;
+            }
+        } while (parsedTile == 0);
+        checkIfChosenFieldIsFromRange();
     }
 
 }
