@@ -56,7 +56,7 @@ public class Game {
     static boolean isPlayerWin(int playerId)
      {
          return (GameBoard.results[0] == playerId && GameBoard.results[1] == playerId && GameBoard.results[2] == playerId) ||
-               (GameBoard.results[3] == playerId && GameBoard.results[4] == playerId && GameBoard.results[5] == playerId) ||
+                (GameBoard.results[3] == playerId && GameBoard.results[4] == playerId && GameBoard.results[5] == playerId) ||
                 (GameBoard.results[6] == playerId && GameBoard.results[7] == playerId && GameBoard.results[8] == playerId) ||
                 (GameBoard.results[0] == playerId && GameBoard.results[3] == playerId && GameBoard.results[6] == playerId) ||
                 (GameBoard.results[1] == playerId && GameBoard.results[4] == playerId && GameBoard.results[7] == playerId) ||
@@ -67,15 +67,17 @@ public class Game {
 
     static boolean checkTheWinner(Player circle, Player plus) {
         if (isPlayerWin(100)) {
-            System.out.println(circle.playerName + " (O) HAS WON!");
-            GameBoard.drawBoard();
-            return true;
+                System.out.println(circle.playerName + " (O) HAS WON!");
+                GameBoard.drawBoard();
+                return true;
         }
+
         if (isPlayerWin(200)) {
-            System.out.println(plus.playerName + " (X) HAS WON!");
-            GameBoard.drawBoard();
-            return true;
+                System.out.println(plus.playerName + " (X) HAS WON!");
+                GameBoard.drawBoard();
+                return true;
         }
+
         return false;
     }
 
