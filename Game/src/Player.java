@@ -21,8 +21,9 @@ public class Player {
             System.out.println("Your choice: " + tile);
             chosenField = true;
             return true;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("exception");
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Given value is from out of acceptable range. " + e.getMessage());
             return false;
         }
     }
@@ -43,11 +44,40 @@ public class Player {
                     chosenField = false;
                     return;
                 }
-            } catch (NumberFormatException nfe) {
+            }
+            catch (NumberFormatException nfe) {
                 System.out.println("You've given an empty value: ");
                 return;
             }
         } while (parsedTile == 0);
+    }
+
+    static boolean hasPlayerWon(int playerId) {
+        return (GameBoard.results[0] == playerId && GameBoard.results[1] == playerId && GameBoard.results[2] == playerId) ||
+                (GameBoard.results[3] == playerId && GameBoard.results[4] == playerId && GameBoard.results[5] == playerId) ||
+                (GameBoard.results[6] == playerId && GameBoard.results[7] == playerId && GameBoard.results[8] == playerId) ||
+                (GameBoard.results[0] == playerId && GameBoard.results[3] == playerId && GameBoard.results[6] == playerId) ||
+                (GameBoard.results[1] == playerId && GameBoard.results[4] == playerId && GameBoard.results[7] == playerId) ||
+                (GameBoard.results[2] == playerId && GameBoard.results[5] == playerId && GameBoard.results[8] == playerId) ||
+                (GameBoard.results[0] == playerId && GameBoard.results[4] == playerId && GameBoard.results[8] == playerId) ||
+                (GameBoard.results[2] == playerId && GameBoard.results[4] == playerId && GameBoard.results[6] == playerId);
+    }
+
+    static boolean checkTheWinner(Player circle, Player plus) {
+
+        if (hasPlayerWon(100)) {
+            System.out.println(circle.playerName + " (O) HAS WON!");
+            GameBoard.drawBoard();
+            return true;
+        }
+
+        if (hasPlayerWon(200)) {
+            System.out.println(plus.playerName + " (X) HAS WON!");
+            GameBoard.drawBoard();
+            return true;
+        }
+
+        return false;
     }
 
 }
