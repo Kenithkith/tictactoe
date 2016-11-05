@@ -6,51 +6,60 @@ public class Game {
 
         GameBoard gameBoard = new GameBoard();
 
-        do {
 
-        Circle playerCircle = new Circle();
-        Plus playerPlus = new Plus();
-
-        while (gameBoard.isAnyBoxFree()) {
-
-            //turn no. 1
-            gameBoard.drawBoard();
+        ComputerPlayer computerPlayer = new ComputerPlayer();
+        if (!computerPlayer.checkIfPlayWithComputer()) {
 
             do {
-                playerCircle.getNumberFromPlayer();
-            } while ((!playerCircle.chosenField));
 
-            playerCircle.assignChosenFieldToPlayer();
+                Circle playerCircle = new Circle();
+                Plus playerPlus = new Plus();
 
+                    while (gameBoard.isAnyBoxFree()) {
 
-            if (Player.checkTheWinner(playerCircle, playerPlus)) {
-                break;
-            }
+                        //turn no. 1
+                        gameBoard.drawBoard();
 
-            gameBoard.checkIfPulpitNotBlocked(playerCircle, playerPlus);
+                        do {
+                            playerCircle.getNumberFromPlayer();
+                        } while ((!playerCircle.chosenField));
 
-            if (!gameBoard.isAnyBoxFree()) break;
-
-            //turn no. 2
-            gameBoard.drawBoard();
-
-            do {
-                playerPlus.getNumberFromPlayer();
-            } while (!playerPlus.chosenField);
-
-            playerPlus.assignChosenFieldToPlayer();
+                        playerCircle.assignChosenFieldToPlayer();
 
 
-            if (Player.checkTheWinner(playerCircle, playerPlus)) {
-                break;
-            }
+                        if (Player.checkTheWinner(playerCircle, playerPlus)) {
+                            break;
+                        }
 
-            gameBoard.checkIfPulpitNotBlocked(playerCircle, playerPlus);
+                        gameBoard.checkIfPulpitNotBlocked(playerCircle, playerPlus);
+
+                        if (!gameBoard.isAnyBoxFree()) break;
+
+                        //turn no. 2
+                        gameBoard.drawBoard();
+
+                        do {
+                            playerPlus.getNumberFromPlayer();
+                        } while (!playerPlus.chosenField);
+
+                        playerPlus.assignChosenFieldToPlayer();
+
+
+                        if (Player.checkTheWinner(playerCircle, playerPlus)) {
+                            break;
+                        }
+
+                        gameBoard.checkIfPulpitNotBlocked(playerCircle, playerPlus);
+                    }
+
+
+                gameBoard.clear();
+
+            } while (gameBoard.isNextGameChosen());
+
+        } else {
+            System.out.println("Loading...");
         }
-
-        gameBoard.clear();
-
-        } while (gameBoard.isNextGameChosen());
     }
 
 }
