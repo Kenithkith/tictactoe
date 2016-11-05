@@ -36,6 +36,7 @@ public class Player {
                 parsedTile = Integer.parseInt(tile);
 
                 if (!checkIfChosenFieldIsFromRange()) {
+                    chosenField = false;
                     return;
                 }
 
@@ -47,6 +48,7 @@ public class Player {
             }
             catch (NumberFormatException nfe) {
                 System.out.println("You've given an empty value: ");
+                chosenField = false;
                 return;
             }
         } while (parsedTile == 0);
