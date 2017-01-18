@@ -10,7 +10,7 @@ public class Plus extends Player {
             playerName = scanner.nextLine();
             if (playerName.isEmpty()) {
                 System.out.println("You haven't entered your name...");
-            }
+        }
         } while (playerName.isEmpty());
     }
 
